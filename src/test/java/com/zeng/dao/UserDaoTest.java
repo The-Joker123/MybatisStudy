@@ -16,7 +16,7 @@ public class UserDaoTest {
         List<User> userList=userDao.getUserList();
 
         for(User user:userList){
-            System.out.println(user);
+            System.out.println(user.getId());
         }
 
         sqlSession.close();
