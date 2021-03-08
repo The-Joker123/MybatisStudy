@@ -5,6 +5,15 @@ public class User {
     private  String name;
     private  String pwd;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pwd='" + pwd + '\'' +
+                '}';
+    }
+
     public User() {
     }
 
@@ -37,4 +46,5 @@ public class User {
     public void setPwd(String pwd) {
         this.pwd = pwd;
     }
+
 }
