@@ -5,7 +5,10 @@ import com.zeng.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class UserDaoTest {
     @Test
@@ -28,6 +31,25 @@ public class UserDaoTest {
         System.out.println(user);
         sqlSession.close();
     }
+    @Test
+    public void getUserlike(){
+        SqlSession sqlSession=MybatisUtils.getSqlSession();
+        UserMapper userMapper=sqlSession.getMapper(UserMapper.class);
+        List<User> userList= userMapper.getUserLike("小");
+        System.out.println(userList);
+        sqlSession.close();
+    }
+
+    @Test
+    public void getByID2(){
+        SqlSession sqlSession=MybatisUtils.getSqlSession();
+        UserMapper userMapper=sqlSession.getMapper(UserMapper.class);
+        Map<String,Object> map=new HashMap<String, Object>();
+        map.put("id",2);
+        User user= userMapper.getUserById2(map);
+        System.out.println(user);
+        sqlSession.close();
+    }
 //增删改需要提交事务
     @Test
     public void addUser(){
@@ -38,6 +60,24 @@ public class UserDaoTest {
            System.out.println("插入成功");
        }
        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Test
+    public void addUser2(){
+        SqlSession sqlSession=MybatisUtils.getSqlSession();
+        UserMapper userMapper=sqlSession.getMapper(UserMapper.class);
+        Map<String,Object> map=new HashMap<String, Object>();
+        map.put("userid",6);
+        map.put("username","小张");
+        map.put("password","12345678");
+
+        int res=userMapper.addUser2(map);
+        if(res>0){
+            System.out.println("插入成功");
+        }
+
+        sqlSession.commit();
         sqlSession.close();
     }
 
