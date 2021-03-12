@@ -9,7 +9,7 @@
   </select>
 
     <select id="getUserById" resultType="com.zeng.pojo.User" parameterType="int">
-        select * from mybatis.user where id=#{id};
+        select * from mybatis.user where id=#{};
     </select>
 
     <insert id="addUser" parameterType="com.zeng.pojo.User">
