@@ -18,7 +18,7 @@ public class UserDaoTest {
         UserMapper userDao=sqlSession.getMapper(UserMapper.class);
         List<User> userList=userDao.getUserList();
         for(User user:userList){
-            System.out.println(user);
+            System.out.println("fsf"+user);
         }
         sqlSession.close();
     }
