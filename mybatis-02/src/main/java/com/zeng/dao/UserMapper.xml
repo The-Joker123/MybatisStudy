@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeng.dao.UserMapper">
+<!--    resultType:SQL语句的返回值！-->
+    <select id="getUserList" resultType="com.zeng.pojo.User">
+    select * from mybatis.user
+  </select>
+
+    <select id="getUserById" resultType="com.zeng.pojo.User" parameterType="int">
+        select * from mybatis.user where id=#{id};
+    </select>
+
+    <insert id="addUser" parameterType="com.zeng.pojo.User">
+        insert into mybatis.user(id, name, pwd) values (#{id},#{name},#{pwd});
+    </insert>
+
+    <update id="updateUser" parameterType="com.zeng.pojo.User">
+        update mybatis.user set name=#{name},pwd=#{pwd} where id=#{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="int" >
+        delete  from  mybatis.user where id=#{id};
+    </delete>
+</mapper>
