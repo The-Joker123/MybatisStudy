@@ -14,5 +14,4 @@
         select * from mybatis.user where id=#{id};
     </select>
 
-
 </mapper>
