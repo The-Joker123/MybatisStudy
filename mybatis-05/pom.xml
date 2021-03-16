@@ -26,6 +26,13 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.zeng</groupId>-->
 <!--            <artifactId>mybatis-01</artifactId>-->
