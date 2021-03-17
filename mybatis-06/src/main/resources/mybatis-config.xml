@@ -5,9 +5,9 @@
 <configuration>
 <!--    <properties resource="db.properties"/>-->
 
-    <typeAliases>
-        <package name="com.zeng.pojo"/>
-    </typeAliases>
+<!--    <typeAliases>-->
+<!--        <package name="com.zeng.pojo"/>-->
+<!--    </typeAliases>-->
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -19,11 +19,12 @@
             </dataSource>
         </environment>
     </environments>
-
     <mappers>
 
-        <mapper resource="com/zeng/dao/UserMapper.xml"/>
+<!--        <mapper resource="com/zeng/dao/TeacherMapper.xml"/>-->
+        <mapper resource="com/zeng/dao/StudentMapper.xml"/>
 <!--        <package name="com.zeng.dao"/>-->
-<!--        <mapper class="com.zeng.dao.User"/>-->
+<!--        <mapper class="com.zeng.dao.UserMapper"/>-->
+
     </mappers>
 </configuration>
