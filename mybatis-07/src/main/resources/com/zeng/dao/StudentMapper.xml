@@ -4,22 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.zeng.dao.StudentMapper">
-   <select id="getStudent" resultMap="StudentTeacher">
+    <select id="getStudent" resultMap="StudentTeacher">
        select * from mybatis.student;
    </select>
     <resultMap id="StudentTeacher" type="com.zeng.pojo.Student">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
-<!--        JavaType是用来指定pojo中属性的类型-->
+        <!--        JavaType是用来指定pojo中属性的类型-->
         <association property="teacher" column="tid" javaType="com.zeng.pojo.Teacher" select="getTeacher"/>
     </resultMap>
     <select id="getTeacher" resultType="com.zeng.pojo.Teacher">
        select * from mybatis.teacher;
    </select>
 
-<!--  ==================================================================  -->
+    <!--  ==================================================================  -->
     <select id="getStudent2" resultMap="StudentTeacher1">
-        select s.id sid,s.name sname,t.id tid,t.name tname from mybatis.teacher t,mybatis.student s where t.id=s.tid;
+        select s.id sid,s.name sname,t.id tid,t.name tname from mybatis.teacher t,mybatis.student s where t.id=s.tid ;
     </select>
     <resultMap id="StudentTeacher1" type="com.zeng.pojo.Student">
         <result property="id" column="sid"/>
