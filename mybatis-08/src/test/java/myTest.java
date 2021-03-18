@@ -5,6 +5,7 @@ import com.zeng.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -62,7 +63,7 @@ public class myTest {
 
         HashMap<String,String> hashMap=new HashMap<String,String>();
 
-        hashMap.put("title","ciji");
+        hashMap.put("title","lalalalla");
         hashMap.put("id","b239e4c600ad433f8ccf15e36a20ae7c");
 //        hashMap.put("author","曾自喜");
       int result= blogMapper.updateBlogSet(hashMap);
@@ -72,4 +73,22 @@ public class myTest {
 
         sqlSession.close();
     }
+    @Test
+    public void testQueryBlogForeach(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        BlogMapper blogMapper = sqlSession.getMapper(BlogMapper.class);
+
+        HashMap<String,String> hashMap=new HashMap<String,String>();
+        ArrayList<Integer> arrayList=new ArrayList<Integer>();
+        arrayList.add(1);
+        hashMap.put("id","你好");
+//        hashMap.put("author","曾自喜");
+        List<Blog> blogList = blogMapper.queryBlogChoose(hashMap);
+        for (Blog blog : blogList) {
+            System.out.println(blog);
+        }
+
+        sqlSession.close();
+    }
+
 }

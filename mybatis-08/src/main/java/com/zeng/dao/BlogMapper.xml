@@ -10,14 +10,20 @@
         value (#{id},#{title},#{author},#{createTime},#{views});
     </insert>
 
-    <select id="queryBlogif" parameterType="map" resultType="com.zeng.pojo.Blog">
-        select * from mybatis.blog where 1=1
+    <sql id="if-title-author" >
         <if test="title!=null">
-            and title=#{title}
+            and title=#{title},
         </if>
         <if test="author!=null">
-            and author=#{author};
+            and author=#{author}
         </if>
+    </sql>
+    <select id="queryBlogif" parameterType="map" resultType="com.zeng.pojo.Blog">
+        select * from mybatis.blog
+        <where>
+            <include refid="if-title-author"></include>
+        </where>
+        
     </select>
 
     <select id="queryBlogChoose" parameterType="map" resultType="com.zeng.pojo.Blog">
@@ -49,4 +55,13 @@
         where id=#{id};
 
     </update>
+    
+    <select id="queryBlogForeach" parameterType="map" resultType="com.zeng.pojo.Blog">
+        select * from mybatis.blog
+        <where>
+        <foreach collection="ids" item="id" open="and (" close= ")" separator="or">
+            id=#{id}
+        </foreach>
+        </where>
+    </select>
 </mapper>
