@@ -8,4 +8,8 @@ import java.util.Map;
 public interface BlogMapper {
     int addBlog(Blog blog);
     List<Blog> queryBlogif(Map map);
+
+    List<Blog> queryBlogChoose(Map map);
+
+    int updateBlogSet(Map map);
 }

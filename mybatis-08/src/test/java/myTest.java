@@ -40,4 +40,36 @@ public class myTest {
 
         sqlSession.close();
     }
+    @Test
+    public void testQueryBlogChoose(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        BlogMapper blogMapper = sqlSession.getMapper(BlogMapper.class);
+
+        HashMap<String,String> hashMap=new HashMap<String,String>();
+        hashMap.put("title","你好");
+//        hashMap.put("author","曾自喜");
+        List<Blog> blogList = blogMapper.queryBlogChoose(hashMap);
+        for (Blog blog : blogList) {
+            System.out.println(blog);
+        }
+
+        sqlSession.close();
+    }
+    @Test
+    public void testUpdateBlogSet(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        BlogMapper blogMapper = sqlSession.getMapper(BlogMapper.class);
+
+        HashMap<String,String> hashMap=new HashMap<String,String>();
+
+        hashMap.put("title","ciji");
+        hashMap.put("id","b239e4c600ad433f8ccf15e36a20ae7c");
+//        hashMap.put("author","曾自喜");
+      int result= blogMapper.updateBlogSet(hashMap);
+        if(result>0){
+            System.out.println("修改成功");
+        }
+
+        sqlSession.close();
+    }
 }

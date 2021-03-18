@@ -19,4 +19,34 @@
             and author=#{author};
         </if>
     </select>
+
+    <select id="queryBlogChoose" parameterType="map" resultType="com.zeng.pojo.Blog">
+        select * from mybatis.blog
+        <where>
+            <choose>
+                <when test="title!=null">
+                    and title=#{title}
+                </when>
+                <when test="author!=null">
+                    and author=#{author};
+                </when>
+
+            </choose>
+        </where>
+
+    </select>
+
+    <update id="updateBlogSet" parameterType="map">
+        update mybatis.Blog
+        <set>
+            <if test="title!=null">
+                 title=#{title},
+            </if>
+            <if test="author!=null">
+                and author=#{author}
+            </if>
+        </set>
+        where id=#{id};
+
+    </update>
 </mapper>
