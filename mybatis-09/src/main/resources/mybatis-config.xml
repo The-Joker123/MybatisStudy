@@ -5,6 +5,9 @@
 <configuration>
 <!--    <properties resource="db.properties"/>-->
     <settings>
+<!--        开启二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+<!--        开启LOG4J日志-->
         <setting name="logImpl" value="LOG4J"/>
     </settings>
 

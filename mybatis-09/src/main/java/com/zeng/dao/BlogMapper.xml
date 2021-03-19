@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.zeng.dao.BlogMapper">
+    <cache readOnly="true"/>
 
     <insert id="addBlog" parameterType="com.zeng.pojo.Blog">
         insert into mybatis.blog (id, title, author, create_time, views)
